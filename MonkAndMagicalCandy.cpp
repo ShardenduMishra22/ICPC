@@ -57,3 +57,48 @@ int InvrsnCnt=0;
 int size_arr=0;
 int size_ll=0;
 int top=-1;
+
+// int main(){
+//     int t;cin>>t;
+//     while(t--){
+//         int n,k;
+//         cin>>n>>k;
+//         int arr[n];
+//         priority_queue<int> pq;
+//         frw(i,n){
+//             cin>>arr[i]; 
+//             pq.push(arr[i]);
+//         }
+//         int sum = 0;
+//         while(k--){
+//             int temp = pq.top(); 
+//             sum += temp;
+//             pq.pop();
+//             pq.push(temp/2);
+//         }
+//         cout<<sum;nl;
+//     }
+// }
+
+int main(){
+    int t;cin>>t;
+    while(t--){
+        int n,k;
+        cin>>n>>k;
+        int arr[n];
+        multiset<int,greater<int>> ms;
+        for(int i=0;i<n;i++){
+            cin>>arr[i];
+            ms.insert(arr[i]);
+        }
+        int sum=0;
+        while(k--){
+            auto it = ms.begin();
+            int temp = *it;
+            sum += temp;
+            ms.erase(it);
+            ms.insert(temp/2);
+        }
+        cout<<sum;nl;
+    }
+}

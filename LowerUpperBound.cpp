@@ -57,3 +57,16 @@ int InvrsnCnt=0;
 int size_arr=0;
 int size_ll=0;
 int top=-1;
+
+int main(){
+    int n;cin>>n;
+    int arr[n];
+    frw(i,n) cin>>arr[i];
+    sort(arr,arr+n);
+    int value = 29;
+    int* ptr1 = lower_bound(arr, arr + n, value);
+    int* ptr2 = upper_bound(arr, arr + n, value);
+
+    cout << "Lower bound index: " << arr[ptr1 - arr] << "\n";
+    cout << "Upper bound index: " << arr[ptr2 - arr] << "\n";
+}

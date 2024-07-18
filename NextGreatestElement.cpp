@@ -57,3 +57,28 @@ int InvrsnCnt=0;
 int size_arr=0;
 int size_ll=0;
 int top=-1;
+
+void NGE(vint& arr, vint& ans) {
+    stack<int> st;
+    for (int i = 0; i < arr.size(); i += 1) {
+        while (!st.empty() && arr[i] > arr[st.top()]) {
+            ans[st.top()] = i;
+            st.pop();
+        }
+        st.push(i);
+    }
+    while (!st.empty()) {
+        ans[st.top()] = -1;
+        st.pop();
+    }
+}
+
+int main() {
+    int n; cin >> n;
+    vint arr(n, 0);
+    frw(i, n) cin >> arr[i];
+    vint ans(n, -1); 
+    NGE(arr, ans);
+    frw(i, n) cout << ans[i] << " ";nl;
+    return 0;
+}

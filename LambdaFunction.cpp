@@ -57,3 +57,19 @@ int InvrsnCnt=0;
 int size_arr=0;
 int size_ll=0;
 int top=-1;
+
+// here Get_Check acts as a comparator function 
+// we can add these similar fucntion in in-built sort fucntion
+
+bool Get_Check(int a,int b){
+    if(a > b) return true;
+    return false;
+}
+
+int main(){
+    int n;cin>>n;
+    vint arr(n,0);
+    frw(i,n) cin>>arr[i];
+    frw(i,n) frw(j,n) if(Get_Check(arr[j],arr[j+1])) swap(arr[j],arr[j+1]);
+    frw(i,n) cout<<arr[i]<<" ";
+}

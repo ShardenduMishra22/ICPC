@@ -57,3 +57,56 @@ int InvrsnCnt=0;
 int size_arr=0;
 int size_ll=0;
 int top=-1;
+
+bool Cmp(const pair<int, int>& a, const pair<int, int>& b) {
+    if (a.first != b.first) {
+        return a.first < b.first;
+    }
+    return a.second > b.second; 
+}
+
+// bool Cmp(pair<int,int> a,pair<int,int> b){
+//     if(a.first != b.first){
+//         if(a.first < b.first){
+//             return true;
+//         }
+//     }else{
+//         if(a.second > b.second){
+//             return true;
+//         }
+//     }
+//     return false;
+// }
+
+int main() {
+    int n;
+    cin >> n;
+    vector<pair<int, int>> ans(n);
+    for (int i = 0; i < n; ++i) {
+        cin >> ans[i].first >> ans[i].second;
+    }
+    sort(ans.begin(), ans.end(), Cmp);
+    cout << "\n";
+    cout << "\n";
+    for (auto& p : ans) {
+        cout << p.first << " " << p.second << " ";
+        cout << "\n";
+    }
+    return 0;
+}
+
+// Sorting In Ascending order
+// inline bool Cmp(int a,int b){
+//     if(a < b){
+//         return true;
+//     }
+//     return false;
+// }
+
+// int main(){
+//     int n;cin>>n;
+//     vint ans(n,0);
+//     frw(i,n) cin>>ans[i];
+//     sort(ans.begin(),ans.end(),Cmp);
+//     frw(i,n) cout<<ans[i]<<" ";
+// }

@@ -57,3 +57,23 @@ int InvrsnCnt=0;
 int size_arr=0;
 int size_ll=0;
 int top=-1;
+
+int main(){
+    set<string> s;
+    s.insert("abc");
+    s.insert("bcd");
+    s.insert("cde");
+    s.insert("rte");
+    s.insert("dfg");
+
+    auto it = s.find("abc");
+    s.erase("dfg");
+    s.erase(it);
+
+    // cout<<(*it);
+    // if(it != s.end()){
+    //     cout<<(*it);
+    // }
+
+
+}
