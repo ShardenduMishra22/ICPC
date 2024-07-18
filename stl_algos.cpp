@@ -59,8 +59,15 @@ int size_ll=0;
 int top=-1;
 
 int main(){
-    vint ans = {1, 4, 2, 3, 9};
-    cout<<all_of(ans.begin(),ans.end(),[](int x){return x % 2 == 0;});
-    cout<<any_of(ans.begin(),ans.end(),[](int x){return x % 2 == 0;});
-    cout<<none_of(ans.begin(),ans.end(),[](int x){return x % 2 == 0;});
+    int n;cin>>n;
+    vint arr(n,0);
+    frw(i,n){
+        cin>>arr[i];
+    }
+    int val = 10;
+    int ini_val = 0;
+    int min = *min_element(arr.begin(),arr.end());
+    int max = *max_element(arr.begin(),arr.end());
+    int cnt = count(arr.begin(),arr.end(),val);
+    int sum = accumulate(arr.begin(),arr.end(),ini_val);
 }
