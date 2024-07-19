@@ -57,3 +57,32 @@ int InvrsnCnt=0;
 int size_arr=0;
 int size_ll=0;
 int top=-1;
+
+void GeneratePara(string& s,int open,int close,vstr& ans){
+    if(open == 0 && close == 0){
+        ans.push_back(s);
+        return;
+    }
+
+    if(open > 0){
+        s.push_back('(');
+        GeneratePara(s,open-1,close,ans);
+        s.pop_back();
+    }
+
+    if(close > 0){
+        if(open < close){
+            s.push_back(')');
+            GeneratePara(s,open,close-1,ans);
+            s.pop_back();
+        }
+    }
+}
+
+int main(){
+    int n;cin>>n;
+    vstr ans;
+    string s;
+    GeneratePara(s,n,n,ans);
+    cout<<ans.size();nl;
+}
