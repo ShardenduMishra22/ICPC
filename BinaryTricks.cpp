@@ -69,6 +69,10 @@ int SetBit(int a,int i){
     return ((1<<i) | a);
 }
 
+int UnSetBit(int a,int i){
+    return ((~(1<<i))&a);
+}
+
 int GetBit(int a,int i){
     return ((1<<i) & a);
 }
@@ -85,6 +89,11 @@ int main(){
 
     // Get Bit
     i = 0;
-    cout<<((GetBit(a,i) == 1) ? "Bit is Set" : "Bit is not Set");
+    cout<<((GetBit(a,i) == 1) ? "Bit is Set" : "Bit is not Set");nl;
+
+    // UnSetting a Bit
+    i=3;
+    int d = UnSetBit(a,i);
+    PrntBnry(d);
     return 0;
 }
