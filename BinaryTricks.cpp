@@ -77,23 +77,70 @@ int GetBit(int a,int i){
     return ((1<<i) & a);
 }
 
+int Toggle(int a,int i){
+    return ((1<<i) ^ a);
+}
+
+int ClearMSB(int a,int i){
+    // PrntBnry((~((1<<(i+1))-1))); // 4
+    return ((~((1<<(i+1))-1)) & a);
+}
+
 int main(){
     int a = 9;   
-    PrntBnry(a);
+    // PrntBnry(a);
 
     // Set Bit
     int b,i = 2;
     b = SetBit(a,i); // should be 13
-    cout<<b;nl;
-    PrntBnry(b);
+    // cout<<b;nl;
+    // PrntBnry(b);
 
     // Get Bit
     i = 0;
-    cout<<((GetBit(a,i) == 1) ? "Bit is Set" : "Bit is not Set");nl;
+    // cout<<((GetBit(a,i) == 1) ? "Bit is Set" : "Bit is not Set");nl;
 
     // UnSetting a Bit
     i=3;
     int d = UnSetBit(a,i);
-    PrntBnry(d);
+    // PrntBnry(d);
+
+    // Toggle a bit
+    i = 1;
+    int e = Toggle(a,i);
+    // cout<<e;nl;
+
+    // count no of bits
+    int f = 8;
+    // cout<<__builtin_popcount(f);nl;
+
+    ll g = 1LL<<35;
+    // cout<<__builtin_popcountll(g);nl;
+
+    char c1 = 'A';
+    // cout<<(char)(c1 | ' ');nl;
+
+    char c2 = 'a';
+    // cout<<(char)(c2 & '_');nl;
+
+    int h = 59;
+    // PrntBnry(h); // 1
+    // PrntBnry(h);
+    i = 4;
+    int one = ClearMSB(h,i);
+    // PrntBnry(one); // 3
+    cout<<one;nl; // 4
+    
+    int j = 16;
+    if(!(j&(j-1))){
+        cout<<"Power of two";nl;
+    }else{
+        cout<<"Not a Power of two";nl;
+    }
+
     return 0;
 }
+
+// int main(){
+//     PrntBnry(1<<5);
+// }
