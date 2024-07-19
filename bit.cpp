@@ -59,6 +59,13 @@ int size_ll=0;
 int top=-1;
 
 int main(){
-    
+    int mx = INT_MAX;
+    // int NumSign1 = (1<<31)-1; // 32 will cause overflow
+    unsigned NumSign2 = (1<<31)-1;
+    // unsigned NumSign2 = (1<<32)-1;
+
+    cout<<mx;nl;
+    // cout<<NumSign1;nl;
+    cout<<NumSign2;nl;
     return 0;
 }
