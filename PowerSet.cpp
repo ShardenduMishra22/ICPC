@@ -58,22 +58,29 @@ int size_arr=0;
 int size_ll=0;
 int top=-1;
 
-void PrntSubset(string& s,int& size){
-    int NoSubSet = pow(2,size);
-
-    frw(i,NoSubSet){
-        frw(j,size){
-            if((1<<j)&i){
-                cout<<s[j];
+void PrntSubset(string& s, int& size, vstr& ans) {
+    int NoSubSet = pow(2, size);
+    // i => 0 to 8
+    frw(i, NoSubSet) {
+        string subset = "";
+        // j => 0 to 3
+        frw(j, size) {
+            if ((1 << j) & i) {
+                subset += s[j];
             }
         }
-        nl;
+        ans.push_back(subset);
     }
 }
 
-int main(){
-    string s = {'a','b','c'};
+int main() {
+    string s = "abc";
     int len = s.size();
-    PrntSubset(s,len);
+    vstr ans;
+    PrntSubset(s, len, ans);
+    frw(i, ans.size()) {
+        cout << ans[i] << " ";
+    }
+    nl;
     return 0;
 }
