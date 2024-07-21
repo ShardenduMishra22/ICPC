@@ -73,6 +73,7 @@ void PrntSubset(string& s, int& size, vstr& ans) {
     }
 }
 
+
 int main() {
     string s = "abc";
     int len = s.size();
