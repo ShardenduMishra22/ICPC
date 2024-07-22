@@ -53,7 +53,7 @@ int size_arr = 0;
 int size_ll = 0;
 int top = -1;
 
-ll BigExpo(ll a,ll b){
+ll BigExpo(ll a,ll b,ll MOD){
     ll ans = 1;
     while(b > 0){
         if(b & 1){
@@ -69,7 +69,7 @@ int main(){
     ll a = 50;
     ll b = 60;
     ll c = 70;
-    a ^ (b ^ c);
-    cout<<BigExpo(a,BigExpo(b,c));
+    ll M = 1e9 + 7;
+    cout<<BigExpo(a,BigExpo(b,c,M-1),M);
     return 0;
 }
