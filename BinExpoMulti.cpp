@@ -53,34 +53,43 @@ int size_arr = 0;
 int size_ll = 0;
 int top = -1;
 
-// using recursion
-ll fast_expo(ll a, ll b){
-    if(b == 0) return 1;
-    ll res = fast_expo(a, b / 2);
-    if(b & 1){
-        return (a * (res * res % MOD) % MOD) % MOD;
-    }
-    return (res * res % MOD) % MOD;
-}
-
-// using iteration
-ll itra_expo(ll a, ll b){
-    ll ans = 1;
-    while(b){
-        if(b & 1){
-            ans = (ans * a % MOD) % MOD;
+int BinMult(ll a, ll b) {
+    int ans = 0;
+    while (b > 0) {
+        if (b & 1) {
+            ans = (ans + a) % MOD;
         }
-        a = (a * a % MOD) % MOD;
+        a = (a + a) % MOD;
         b >>= 1;
     }
     return ans;
 }
 
-int main(){
+int BinExpo(ll a, ll b) {
+    int ans = 1;
+    while (b > 0) {
+        if (b & 1) {
+            ans = BinMult(ans, a);
+        }
+        a = BinMult(a, a) % MOD;
+        b >>= 1;
+    }
+    return ans;
+}
+
+int main() {
     ll num1, num2;
     num1 = 223344;
     num2 = 1234567;
-    cout << fast_expo(num1, num2); nl;
-    cout << itra_expo(num1, num2); nl;
+    cout << BinExpo(num1, num2);
     return 0;
 }
+
+// Uncomment the following main function to test __gcd
+// int main(){
+//     cout << __gcd(1, 5); nl;
+//     cout << __gcd(2, 5); nl;
+//     cout << __gcd(3, 5); nl;
+//     cout << __gcd(4, 5); nl;
+//     cout << __gcd(5, 5); nl;
+// }
