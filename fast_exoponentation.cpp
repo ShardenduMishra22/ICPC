@@ -1,11 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#pragma GCC target   ("sse,sse2,sse3,ssse3,sse4,popcnt,abm,mmx")
-#pragma GCC optimize ("Ofast")
-#pragma GCC optimize ("-ffloat-store")
-#pragma GCC optimize ("Ofast")
-
 static auto _ = [] () {
     ios_base::sync_with_stdio(false);
     cin.tie(nullptr);
@@ -49,38 +44,43 @@ typedef queue<bool> qbl;
 typedef queue<int> qint;
 typedef queue<ll> qll;
 
-c_int MOD=1e9 + 7;
-c_int Mx_row=100;
-c_int Mx_col=100;
-int size_stack=0;
-int InvrsnCnt=0;
-int size_arr=0;
-int size_ll=0;
-int top=-1;
+c_int MOD = 1e9 + 7;
+c_int Mx_row = 100;
+c_int Mx_col = 100;
+int size_stack = 0;
+int InvrsnCnt = 0;
+int size_arr = 0;
+int size_ll = 0;
+int top = -1;
 
-void PrntSubset(string& s, int& size, vstr& ans) {
-    int NoSubSet = pow(2, size);
-    // i => 0 to 8
-    frw(i, NoSubSet) {
-        string subset = "";
-        // j => 0 to 3
-        frw(j, size) {
-            if ((1 << j) & i) {
-                subset += s[j];
-            }
-        }
-        ans.push_back(subset);
+// using recursion
+ll fast_expo(ll a, ll b){
+    if(b == 0) return 1;
+    ll res = fast_expo(a, b / 2);
+    if(b & 1){
+        return (a * (res * res % MOD) % MOD) % MOD;
     }
+    return (res * res % MOD) % MOD;
 }
 
-int main() {
-    string s = "abc";
-    int len = s.size();
-    vstr ans;
-    PrntSubset(s, len, ans);
-    frw(i, ans.size()) {
-        cout << ans[i] << " ";
+// using iteration
+ll itra_expo(ll a, ll b){
+    ll ans = 1;
+    while(b){
+        if(b & 1){
+            ans = (ans * a % MOD) % MOD;
+        }
+        a = (a * a % MOD) % MOD;
+        b >>= 1;
     }
-    nl;
+    return ans;
+}
+
+int main(){
+    ll num1, num2;
+    num1 = 223423;
+    num2 = 1234234;
+    cout << fast_expo(num1, num2); nl;
+    cout << itra_expo(num1, num2); nl;
     return 0;
 }
