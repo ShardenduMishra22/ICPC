@@ -58,31 +58,41 @@ int size_arr=0;
 int size_ll=0;
 int top=-1;
 
-c_int N = 1e5 + 7;
-vint Fact(N,1);
+c_int MOD = 1e9 + 7;
+c_int MAXN = 1e5 + 10;
+vint Fact(N, 1);
 
-int BinExpo(int a,int b,int m){
+int BinExpo(int a, int b, int m) {
     int res = 1;
-    while(b > 0){
-        if(b & 1){
-            res = ((res * a * 1ll)%m);
+    while (b > 0) {
+        if (b & 1) {
+            res = (res * 1LL * a) % m;
         }
-        a = ((a * a * 1ll)%m);
+        a = (a * 1LL * a) % m;
         b >>= 1;
     }
     return res;
 }
 
-int main(){
-    for(int i=1;i<N;i++){
-        Fact[i] = ((i * 1ll * Fact[i-1])%MOD); 
+int main() {
+    for (int i = 1; i < MAXN; i++) {
+        Fact[i] = (i * 1LL * Fact[i-1]) % MOD;
     }
-    int q;cin>>q;
-    while(q--){
-        int n;cin>>n;
-        int k;cin>>k;
-        int ans = Fact[n];
-        int den = ((Fact[n-k] * Fact[k] * 1ll)%MOD);
-        ans = ans * BinExpo(ans,MOD-2,MOD);
+    int q; 
+    cin >> q;
+    while (q--) {
+        int n; 
+        cin >> n;
+        int k; 
+        cin >> k;
+        if (n < k) {
+            cout << 0 << "\n"; 
+            continue;
+        }
+        int ans = Fact[n] * ((ans * 1ll * Fact[k])%MOD);
+        int den = (Fact[n-k] * 1LL * Fact[k]) % MOD;
+        ans = (ans * 1LL * BinExpo(den, MOD-2, MOD)) % MOD;
+        cout << ans << "\n";
     }
+    return 0;
 }
