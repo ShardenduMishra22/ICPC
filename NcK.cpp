@@ -77,12 +77,10 @@ int main(){
     for(int i=1;i<N;i++){
         Fact[i] = ((i * 1ll * Fact[i-1])%MOD); 
     }
-
     int q;cin>>q;
     while(q--){
         int n;cin>>n;
         int k;cin>>k;
-
         int ans = Fact[n];
         int den = ((Fact[n-k] * Fact[k] * 1ll)%MOD);
         ans = ans * BinExpo(ans,MOD-2,MOD);
