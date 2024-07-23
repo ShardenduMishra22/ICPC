@@ -58,7 +58,7 @@ int size_arr=0;
 int size_ll=0;
 int top=-1;
 
-c_int N = 1e9 + 7;
+c_int N = 1e5 + 7;
 vint Fact(N,1);
 
 int BinExpo(int a,int b,int m){
