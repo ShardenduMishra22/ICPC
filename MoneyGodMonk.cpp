@@ -58,3 +58,10 @@ int size_arr=0;
 int size_ll=0;
 int top=-1;
 
+int main(){
+    int t;cin>>t;
+    while(t--){    
+        ll amt;cin>>amt;
+        cout<<__builtin_popcountll(amt);nl;
+    }
+}
