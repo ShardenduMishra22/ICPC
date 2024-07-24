@@ -73,7 +73,7 @@ void dfs(int vertex){
 
 int main(){
     int NumberOfEdges,NumberOfNodes;
-    cin>>NumberOfEdges>>NumberOfNodes;
+    cin>>NumberOfNodes>>NumberOfEdges;
     for(int i=0;i<NumberOfEdges;i++){
         int u,v;
         cin>>u>>v;
