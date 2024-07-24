@@ -59,6 +59,7 @@ int size_ll=0;
 int top=-1;
 
 c_int MOD = 1e9 + 7;
+c_int N = 1e5 + 10;
 c_int MAXN = 1e5 + 10;
 vint Fact(N, 1);
 
