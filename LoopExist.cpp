@@ -61,18 +61,20 @@ int top=-1;
 c_int N = 1e5 + 10;
 vint g[N];
 vbl vis(N,false);
-vvint cc;
-vint curr_cc;
 
-void dfs(int vrtx){
+bool dfs(int vrtx,int par){
+    bool IsLoop = false;
     vis[vrtx] = true;
-    curr_cc.push_back(vrtx);
     for(auto child : g[vrtx]){
-        if(vis[child]){
+        if(vis[child] && child == par){
             continue;
         }
-        dfs(child);
+        if(vis[child]){
+            return true;
+        }
+        IsLoop |= dfs(child,vrtx);
     }
+    return IsLoop;
 }
 
 int main(){
@@ -84,22 +86,22 @@ int main(){
         g[v].push_back(u);
         g[u].push_back(v);
     }
-
+    bool IsLoop = false;
     int cnt = 0;
     for(int i=1;i<Nodes;i++){
         if(vis[i]){
             continue;
         }
-        curr_cc.clear();
-        dfs(i);
-        cc.push_back(curr_cc);
+        if(dfs(i,0)){
+            IsLoop = true;
+            break;
+        }
         cnt += 1;
     }
-    for(auto c_cc: cc){
-        for(auto vrtx : c_cc){
-            cout<<vrtx<<" ";
-        }
-        nl;
+    if(IsLoop){
+        cout<<"Loop Exists";
+    }else{
+        cout<<"No Loop";
     }
     return 0;
 }
