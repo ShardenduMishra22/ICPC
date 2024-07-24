@@ -53,7 +53,12 @@ int size_arr = 0;
 int size_ll = 0;
 int top = -1;
 
+
+
 int main(){
-    
+    int Nodes;cin>>Nodes;
+    frw(i,Nodes){
+
+    }
     return 0;
 }
