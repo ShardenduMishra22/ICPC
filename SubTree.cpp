@@ -110,6 +110,5 @@ int main() {
         cout << "Prime count: " << PrimeCount[i] << "\n";
         nl
     }
-
     return 0;
 }
