@@ -3,7 +3,7 @@
 #include <algorithm>
 using namespace std;
 
-void dfs(int vertex, int parent, const vector<vector<int>>& g, vector<long>& subtree_sum) {
+void dfs(int vertex, int parent,vector<vector<int>>& g, vector<long>& subtree_sum) {
     subtree_sum[vertex] = 1; // Initialize with the node itself
     for (int child : g[vertex]) {
         if (child == parent) continue;
