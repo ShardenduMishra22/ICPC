@@ -50,7 +50,7 @@ c_int Mx_col = 100;
 
 c_int N = 1e5 + 10;
 vint g[N];
-vector<int> parent(N, -1);  // Track parent of each node
+vector<int> parent(N, 0);  // Track parent of each node
 vector<int> depth(N, 0);    // Track depth of each node
 
 void dfs(int vrtx, int prnt) {
@@ -64,7 +64,7 @@ void dfs(int vrtx, int prnt) {
 
 vint path(int node) {
     vint p;
-    while (node != -1) {
+    while (node != 0) {
         p.push_back(node);
         node = parent[node];
     }
@@ -75,7 +75,7 @@ vint path(int node) {
 int findLCA(int x, int y) {
     vint pathX = path(x);
     vint pathY = path(y);
-    int lca = -1;
+    int lca = 0;
 
     // Iterate through both paths to find the common ancestor
     int i = 0;
@@ -98,7 +98,7 @@ int main() {
         g[u].push_back(v);
     }
 
-    dfs(1, -1);  // Start DFS from node 1 with no parent (-1)
+    dfs(1, 0);  // Start DFS from node 1 with no parent (0)
 
     int x, y;
     cin >> x >> y;
