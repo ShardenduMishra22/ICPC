@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+
 #define frb(i, len) for(int i = len-1; i >= 0; i--)
 #define fr(i, len) for(int i = 0; i < len; i++)
 #define tas cout<<"Tell a string : ";
