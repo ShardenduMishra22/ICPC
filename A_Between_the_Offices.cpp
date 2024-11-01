@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
+
 int main(){
     int n,cnt1=0,cnt2=0;
     cin>>n;
